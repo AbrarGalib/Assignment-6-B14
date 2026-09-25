@@ -34,7 +34,7 @@ export const WorkoutProvider = ({ children }: { children: React.ReactNode }) => 
   const [plan, setPlan] = useState<Workout[]>([]);
   const [saved, setSaved] = useState<Workout[]>([]);
 
-  // Load from local storage on refresh
+  
   useEffect(() => {
     const localPlan = localStorage.getItem("fitlog_plan");
     const localSaved = localStorage.getItem("fitlog_saved");
@@ -42,7 +42,7 @@ export const WorkoutProvider = ({ children }: { children: React.ReactNode }) => 
     if (localSaved) setSaved(JSON.parse(localSaved));
   }, []);
 
-  // Save to local storage when changed
+  
   useEffect(() => {
     localStorage.setItem("fitlog_plan", JSON.stringify(plan));
     localStorage.setItem("fitlog_saved", JSON.stringify(saved));

@@ -4,6 +4,10 @@
 @theme {
   --color-darkbg: #111317;
   --color-darkcard: #1a1d24;
+  
+  /* Add these two lines to make Next.js fonts work with Tailwind v4! */
+  --font-inter: var(--font-inter);
+  --font-oswald: var(--font-oswald);
 }
 
 /* Force dark background */
