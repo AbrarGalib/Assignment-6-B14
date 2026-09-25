@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-// FIXED: Using relative path to go up one folder (../)
 import { useWorkouts } from "../context/WorkoutContext";
 import { Clock, Flame, Star, Check, X } from "lucide-react";
 
@@ -14,13 +13,12 @@ export default function MyPlan() {
   
   const sortedList = [...currentList].sort((a, b) => {
     if (sortBy === "rating") return b.rating - a.rating;
-    // FIXED: Updated to use caloriesBurned to match the API
     if (sortBy === "calories") return b.caloriesBurned - a.caloriesBurned; 
     return b.duration - a.duration; // default duration descending
   });
 
   const totalDuration = currentList.reduce((acc, curr) => acc + curr.duration, 0);
-  // FIXED: Updated to use caloriesBurned to match the API so math doesn't break
+  
   const totalCalories = currentList.reduce((acc, curr) => acc + (curr.caloriesBurned || 0), 0);
 
   return (
@@ -87,7 +85,7 @@ export default function MyPlan() {
                 <p className="text-sm text-gray-400 mb-3">{workout.equipment}</p>
                 <div className="flex justify-center sm:justify-start items-center gap-4 text-xs text-gray-300">
                   <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-accent" /> {workout.duration} min</span>
-                  {/* FIXED: Updated to use caloriesBurned here as well */}
+                  
                   <span className="flex items-center gap-1"><Flame className="w-3 h-3 text-accent" /> {workout.caloriesBurned} kcal</span>
                   <span className="flex items-center gap-1"><Star className="w-3 h-3 text-accent" /> {workout.rating}</span>
                 </div>

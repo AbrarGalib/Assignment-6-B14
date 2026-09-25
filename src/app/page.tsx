@@ -41,7 +41,7 @@ export default function Home() {
           </div>
           
           <div className="flex-1 flex justify-center md:justify-end">
-            {/* Using your local PNG file! */}
+            
             <img 
               src="/assets/banner.png" 
               alt="Hero Banner" 
