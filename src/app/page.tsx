@@ -70,7 +70,7 @@ export default function Home() {
                 </div>
                 <div className="p-6 flex-grow flex flex-col">
                   <div className="flex flex-wrap gap-2 mb-3">
-                    {workout.tags?.map(tag => (
+                    {workout.muscleGroups?.map(tag => (
                       <span key={tag} className="bg-accent text-black text-xs font-bold px-2 py-1 rounded-full uppercase">{tag}</span>
                     ))}
                   </div>
