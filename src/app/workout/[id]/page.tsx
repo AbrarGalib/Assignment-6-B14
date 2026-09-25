@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-// FIXED: Using relative path to go up two folders (../../) 
 import { useWorkouts, Workout } from "../../context/WorkoutContext";
 import { CalendarPlus, Bookmark } from "lucide-react";
 
@@ -34,7 +33,7 @@ export default function WorkoutDetails() {
           <h1 className="text-4xl md:text-5xl font-oswald font-bold uppercase mb-4">{workout.name}</h1>
           <p className="text-gray-400 text-lg mb-4">{workout.description}</p>
           <div className="flex gap-2">
-            {/* FIXED: Added the question mark here to prevent the map error */}
+        
             {workout.muscleGroups?.map(tag => (
               <span key={tag} className="bg-accent text-black text-xs font-bold px-3 py-1 rounded-full uppercase">{tag}</span>
             ))}
@@ -48,7 +47,7 @@ export default function WorkoutDetails() {
             { label: "Sets", value: workout.sets },
             { label: "Reps", value: workout.reps },
             { label: "Duration", value: `${workout.duration} min` },
-            { label: "Calories", value: `${workout.calories} kcal` },
+            { label: "Calories", value: `${workout.caloriesBurned} kcal` },
             { label: "Rating", value: workout.rating },
           ].map((stat, i) => (
             <div key={i} className="flex justify-between items-center p-4 text-sm">

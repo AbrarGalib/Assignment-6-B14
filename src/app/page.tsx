@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Clock, Flame, Star } from "lucide-react";
-import { Workout } from "@/context/WorkoutContext";
+import { Workout } from "./context/WorkoutContext";
 
 export default function Home() {
   const [workouts, setWorkouts] = useState<Workout[]>([]);
@@ -25,7 +25,7 @@ export default function Home() {
           
           <div className="flex-1 space-y-6">
             <p className="text-accent font-bold tracking-widest text-sm uppercase">Workout Library</p>
-           <h1 className="text-5xl md:text-6xl lg:text-5xl font-oswald font-bold uppercase leading-[1.1] text-white">
+            <h1 className="text-5xl md:text-6xl lg:text-5xl font-oswald font-bold uppercase leading-[1.1] text-white">
               Train with intent. Log <br />
               every set.
             </h1>
@@ -70,8 +70,9 @@ export default function Home() {
                 </div>
                 <div className="p-6 flex-grow flex flex-col">
                   <div className="flex flex-wrap gap-2 mb-3">
-                    {workout.muscleGroups?.map(tag => (
-                      <span key={tag} className="bg-accent text-black text-xs font-bold px-2 py-1 rounded-full uppercase">{tag}</span>
+                    {/* FIXED: Added (tag: string) to fix the TypeScript 'any' error */}
+                    {workout.muscleGroups?.map((tag: string) => (
+                      <span key={tag} className="bg-accent text-black text-xs font-bold px-2 py-1 rounded-full capitalize">{tag}</span>
                     ))}
                   </div>
                   <h3 className="text-xl font-oswald font-bold uppercase mb-1 text-white">{workout.name}</h3>
@@ -79,7 +80,8 @@ export default function Home() {
                   
                   <div className="flex justify-between items-center text-sm text-gray-300 mt-auto">
                     <div className="flex items-center gap-1"><Clock className="w-4 h-4" /> {workout.duration} min</div>
-                    <div className="flex items-center gap-1"><Flame className="w-4 h-4" /> {workout.calories} kcal</div>
+                    {/* FIXED: Changed workout.calories to workout.caloriesBurned */}
+                    <div className="flex items-center gap-1"><Flame className="w-4 h-4" /> {workout.caloriesBurned} kcal</div>
                     <div className="flex items-center gap-1"><Star className="w-4 h-4 text-accent" /> {workout.rating}</div>
                   </div>
                 </div>
